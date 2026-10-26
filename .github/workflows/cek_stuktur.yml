@@ -37,7 +37,7 @@ jobs:
           echo "✅ Implementasi LayarKedua sudah sesuai."
       - name: Cek fungsi main() di main.dart
         run: |
-          FILE="latihan_rout/lib/main.dart"
+          FILE="latihan_route/lib/main.dart"
           
           echo "Mengecek fungsi main..."
           grep -q "void main()" "$FILE" || { echo "❌ Fungsi void main() tidak ditemukan di main.dart!"; exit 1; }

@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'layarkeduapisah.dart';
+
 //screen kedua
 class LayarKedua extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // TODO: implement build
     return Scaffold(
       appBar: AppBar(
         title: const Text(' Ini Screen 2'),
@@ -23,7 +24,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(title: 'Test Route', home: MyHome());
+    return MaterialApp(
+      title: 'Test Route',
+      routes: {
+        '/': (context) => MyHome(),
+        '/layar2': (context) => LayarKedua(),
+      },
+    );
   }
 }
 
@@ -36,13 +43,26 @@ class MyHome extends StatelessWidget {
         title: const Text('Test Route'),
       ),
       body: Center(
-        child: ElevatedButton(
-            child: Text('Ke screen Kedua'),
-            onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return LayarKedua();
-              }));
-            }),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed('/layar2');
+              },
+              child: const Text('Ke Screen Kedua'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  return LayarKeduaPisah(
+                      pesan: "halloo ini pesan dari screen 1");
+                }));
+              },
+              child: const Text('Ke Screen Kedua Pisah'),
+            ),
+          ],
+        ),
       ),
     );
   }
